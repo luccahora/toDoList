@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 import { styles } from "./styles";
 
 interface Props {
-  numberTasks: string;
+  numberTasks: number;
 }
 
 export function Counter({ numberTasks }: Props) {

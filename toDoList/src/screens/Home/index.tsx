@@ -61,7 +61,7 @@ export function Home() {
         <View style={styles.tasksInfo}>
           <View style={styles.info}>
             <Text style={styles.infoCreatedText}>Criadas</Text>
-            <Counter numberTasks={"0"} />
+            <Counter numberTasks={tasks.length} />
           </View>
           <View style={styles.info}>
             <Text style={styles.infoDone}>Concluídas</Text>
