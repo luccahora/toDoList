@@ -6,6 +6,7 @@ import {
   Image,
   Text,
   FlatList,
+  Alert,
 } from "react-native";
 import { CardTask } from "../../components/CardTask";
 import { Counter } from "../../components/Counter/intex";
@@ -19,9 +20,25 @@ export function Home() {
   const [tasks, setTasks] = useState<string[]>([]);
   const [tasksName, setTasksName] = useState("");
 
-  function handleTask() {
+  function handleAddTask() {
     setTasks((prevState) => [...prevState, tasksName]);
     setTasksName("");
+  }
+
+  function handleRemoveTask(taskDescription: string) {
+    Alert.alert("Remover", `Deseja remover essa tarefa?`, [
+      {
+        text: "Sim",
+        onPress: () =>
+          setTasks((prevState) =>
+            prevState.filter((tasks) => tasks !== taskDescription)
+          ),
+      },
+      {
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
   }
 
   return (
@@ -37,7 +54,7 @@ export function Home() {
             onChangeText={setTasksName}
             value={tasksName}
           />
-          <TouchableOpacity style={styles.button} onPress={handleTask}>
+          <TouchableOpacity style={styles.button} onPress={handleAddTask}>
             <Image source={require("../../assets/ButtonPlus.png")} />
           </TouchableOpacity>
         </View>
@@ -54,7 +71,12 @@ export function Home() {
         <FlatList
           data={tasks}
           keyExtractor={(item) => item}
-          renderItem={({ item }) => <CardTask taskDescription={item} />}
+          renderItem={({ item }) => (
+            <CardTask
+              taskDescription={item}
+              onRemove={() => handleRemoveTask(item)}
+            />
+          )}
           ListEmptyComponent={() => <ListEmpty />}
         />
       </View>

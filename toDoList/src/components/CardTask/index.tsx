@@ -7,9 +7,10 @@ import { styles } from "./styles";
 
 interface Props {
   taskDescription: string;
+  onRemove: () => void;
 }
 
-export function CardTask({ taskDescription }: Props) {
+export function CardTask({ taskDescription, onRemove }: Props) {
   const [isChecked, setChecked] = useState(false);
   return (
     <View style={styles.container}>
@@ -24,7 +25,7 @@ export function CardTask({ taskDescription }: Props) {
         }
       />
       <Text style={styles.text(isChecked)}>{taskDescription}</Text>
-      <TouchableOpacity style={styles.trash}>
+      <TouchableOpacity style={styles.trash} onPress={onRemove}>
         <Image source={require("../../assets/trash.png")} />
       </TouchableOpacity>
     </View>
