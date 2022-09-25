@@ -16,7 +16,13 @@ import { THEME } from "../../styles/theme";
 import { styles } from "./styles";
 
 export function Home() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasksName, setTasksName] = useState("");
+
+  function handleTask() {
+    setTasks((prevState) => [...prevState, tasksName]);
+    setTasksName("");
+  }
 
   return (
     <>
@@ -28,8 +34,10 @@ export function Home() {
             placeholder="Adicione uma nova tarefa"
             placeholderTextColor={THEME.colors.base.gray[300]}
             selectionColor={THEME.colors.product.purpleDark}
+            onChangeText={setTasksName}
+            value={tasksName}
           />
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={handleTask}>
             <Image source={require("../../assets/ButtonPlus.png")} />
           </TouchableOpacity>
         </View>
