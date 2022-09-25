@@ -35,8 +35,6 @@ export const styles = StyleSheet.create({
   tasksInfo: {
     flexDirection: "row",
     justifyContent: "space-between",
-    borderBottomColor: THEME.colors.base.gray[400],
-    borderBottomWidth: 1,
   },
   info: {
     flexDirection: "row",

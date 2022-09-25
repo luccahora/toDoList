@@ -1,5 +1,6 @@
 import React from "react";
 import { View, TextInput, TouchableOpacity, Image, Text } from "react-native";
+import { CardTask } from "../../components/CardTask";
 import { Header } from "../../components/Header";
 import { THEME } from "../../styles/theme";
 
@@ -39,6 +40,7 @@ export function Home() {
             <Counter />
           </View>
         </View>
+        <CardTask />
       </View>
     </>
   );
