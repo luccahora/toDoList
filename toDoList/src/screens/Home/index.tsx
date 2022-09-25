@@ -1,12 +1,22 @@
-import React from "react";
-import { View, TextInput, TouchableOpacity, Image, Text } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  Text,
+  FlatList,
+} from "react-native";
 import { CardTask } from "../../components/CardTask";
 import { Header } from "../../components/Header";
+import { ListEmpty } from "../../components/ListEmpty";
 import { THEME } from "../../styles/theme";
 
 import { styles } from "./styles";
 
 export function Home() {
+  const [tasks, setTasks] = useState([]);
+
   const Counter = () => {
     return (
       <View style={styles.counter}>
@@ -40,7 +50,12 @@ export function Home() {
             <Counter />
           </View>
         </View>
-        <CardTask />
+        <FlatList
+          data={tasks}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => <CardTask taskDescription={item} />}
+          ListEmptyComponent={() => <ListEmpty />}
+        />
       </View>
     </>
   );

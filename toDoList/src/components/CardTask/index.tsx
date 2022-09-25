@@ -5,7 +5,11 @@ import { THEME } from "../../styles/theme";
 
 import { styles } from "./styles";
 
-export function CardTask() {
+interface Props {
+  taskDescription: string;
+}
+
+export function CardTask({ taskDescription }: Props) {
   const [isChecked, setChecked] = useState(false);
   return (
     <View style={styles.container}>
@@ -19,9 +23,7 @@ export function CardTask() {
             : THEME.colors.product.blue
         }
       />
-      <Text style={styles.text(isChecked)}>
-        Integer urna interdum massa libero auctor neque turpis turpis semper.
-      </Text>
+      <Text style={styles.text(isChecked)}>{taskDescription}</Text>
       <TouchableOpacity style={styles.trash}>
         <Image source={require("../../assets/trash.png")} />
       </TouchableOpacity>
