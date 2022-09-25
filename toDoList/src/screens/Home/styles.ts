@@ -40,20 +40,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
   },
-  counter: {
-    width: 25,
-    height: 19,
-    backgroundColor: THEME.colors.base.gray[400],
-    borderRadius: 999,
-    alignItems: "center",
-    justifyContent: "center",
-    marginLeft: 10,
-  },
-  counterText: {
-    fontFamily: THEME.fonts.title,
-    fontSize: THEME.fontSizes.xs,
-    color: THEME.colors.base.gray[100],
-  },
+
   infoCreatedText: {
     fontFamily: THEME.fonts.title,
     fontSize: THEME.fontSizes.md,

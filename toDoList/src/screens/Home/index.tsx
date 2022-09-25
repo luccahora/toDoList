@@ -8,6 +8,7 @@ import {
   FlatList,
 } from "react-native";
 import { CardTask } from "../../components/CardTask";
+import { Counter } from "../../components/Counter/intex";
 import { Header } from "../../components/Header";
 import { ListEmpty } from "../../components/ListEmpty";
 import { THEME } from "../../styles/theme";
@@ -16,14 +17,6 @@ import { styles } from "./styles";
 
 export function Home() {
   const [tasks, setTasks] = useState([]);
-
-  const Counter = () => {
-    return (
-      <View style={styles.counter}>
-        <Text style={styles.counterText}>0</Text>
-      </View>
-    );
-  };
 
   return (
     <>
@@ -43,11 +36,11 @@ export function Home() {
         <View style={styles.tasksInfo}>
           <View style={styles.info}>
             <Text style={styles.infoCreatedText}>Criadas</Text>
-            <Counter />
+            <Counter numberTasks={"0"} />
           </View>
           <View style={styles.info}>
             <Text style={styles.infoDone}>Concluídas</Text>
-            <Counter />
+            <Counter numberTasks={"0"} />
           </View>
         </View>
         <FlatList
